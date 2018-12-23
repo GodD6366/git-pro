@@ -14,7 +14,7 @@ to retry!`);
         return;
     }
     if (addStdout.indexOf('nothing to commit') > 0) {
-        ora().fail(`nothing to commit, working tree clean`);
+        ora().succeed(`nothing to commit, working tree clean`);
         return;
     }
 
