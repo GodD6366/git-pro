@@ -25,7 +25,7 @@ to retry!`);
         msg
     } = await inquirer.prompt(prompsConfig.ciMsg);
 
-    const commitSpinner = ora('git commit 提交代码').start();
+    const commitSpinner = ora('git commit').start();
     let commitMsg = `git commit -m "${type} ${msg}"`
     const {
         code,
@@ -33,11 +33,11 @@ to retry!`);
         stderr
     } = shell.exec(commitMsg);
     if (code !== 0) {
-        commitSpinner.fail('提交失败!')
+        commitSpinner.fail('commit failed!')
         console.log(chalk.cyan(`->  ${commitMsg}`));
         throw new Error(stdout + '\n' + stderr);
     }
-    commitSpinner.succeed('提交完成!')
+    commitSpinner.succeed('commit succeed!')
     return true;
 }
 
