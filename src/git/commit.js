@@ -5,12 +5,16 @@ const ora = require('ora');
 const prompsConfig = require('../config/promps');
 
 async function commit() {
-
-    if (shell.exec('git status').stdout.indexOf('no changes added to commit') > 0) {
+    let addStdout = shell.exec('git status').stdout
+    if (addStdout.indexOf('no changes added to commit') > 0) {
         ora().fail(
-            `没有已暂存的文件用于提交!请使用:
+            `no changes added to commit! please use:
     git-tools commit -a [files]
-进行提交!`);
+to retry!`);
+        return;
+    }
+    if (addStdout.indexOf('nothing to commit') > 0) {
+        ora().fail(`nothing to commit, working tree clean`);
         return;
     }
 
