@@ -1,6 +1,6 @@
 {
     "name": "git-pro",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "description": "git commit 增强工具",
     "main": "lib/index.js",
     "scripts": {
