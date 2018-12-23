@@ -2,14 +2,14 @@ const shell = require('shelljs');
 const ora = require('ora');
 shell.config.silent = true;
 
-function add(files = '.') {
+function add(files: String) {
+    if (!files) {
+        files = '.';
+    }
     const addSpinner = ora('git add').start();
-    const {
-        stderr,
-        code
-    } = shell.exec(`git add ${files}`);
+    const { stderr, code } = shell.exec(`git add ${files}`);
     if (code !== 0) {
-        addSpinner.fail('add failed!')
+        addSpinner.fail('add failed!');
         throw new Error(stderr);
     }
     addSpinner.succeed('add succeed!');
