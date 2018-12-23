@@ -16,12 +16,12 @@ let addFiles = '';
 
 program
     .command('commit [options]')
-    .description('创建一次Git提交')
-    .option('-a, --add [items]', '是否暂存文件', (files: String = '') => {
+    .description('进行一次Git提交')
+    .option('-a, --add [items]', '暂存文件', (files: String = '') => {
         addFiles = files.split(',').join(' ');
         return !!addFiles;
     })
-    .option('-p, --pull', '提交前先拉取最新代码,在提交')
+    .option('-p, --pull', '提交前先拉取最新代码')
     .action((name: String, cmd: any) => {
         try {
             cmd.pull && pull();
@@ -33,6 +33,9 @@ program
         }
     });
 
+/**
+ * 其他git命令代理
+ */
 program.command('*').action(others);
 
 program.parse(process.argv);

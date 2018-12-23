@@ -1,15 +1,14 @@
 {
-    "name": "git-cli",
-    "version": "1.0.0",
-    "description": "",
-    "main": "src/index.js",
+    "name": "git-pro",
+    "version": "0.1.2",
+    "description": "git commit 增强工具",
+    "main": "lib/index.js",
     "scripts": {
-        "start": "node src/index.js",
-        "build": "rollup -c build/rollup.config.js",
-        "build:cmjs": "tsc -d -P tsconfig.json"
+        "start": "ts-node src/index.ts",
+        "build": "tsc -d -P tsconfig.json"
     },
     "bin": {
-        "git-cli": "src/index.js"
+        "git-pro": "lib/index.js"
     },
     "author": "",
     "license": "ISC",
@@ -24,5 +23,8 @@
         "inquirer": "^6.2.0",
         "ora": "^3.0.0",
         "shelljs": "^0.8.2"
+    },
+    "engines": {
+        "node": ">=8.4.0"
     }
 }
