@@ -5,6 +5,7 @@ import chalk from 'chalk';
 import add from '../git/add';
 import commit from '../git/commit';
 import pull from '../git/pull';
+import push from '../git/push';
 import others from '../git/others';
 import { init } from '../utils/gitpro';
 
@@ -23,11 +24,14 @@ program
         return !!addFiles;
     })
     .option('-p, --pull', '提交前先拉取最新代码')
+    .option('-s, --push', '提交完成后,推送代码')
     .action((name: String, cmd: any) => {
         try {
             cmd.pull && pull();
             cmd.add && add(addFiles);
-            commit();
+            commit().then(() => {
+                cmd.push && push();
+            });
         } catch ({ message }) {
             console.log(chalk.red('\n' + message));
             process.exit(0);
@@ -44,7 +48,10 @@ program
 /**
  * 其他git命令代理
  */
-program.command('*').action(others);
+program
+    .command('*')
+    .description('代理其他git操作')
+    .action(others);
 
 program.parse(process.argv);
 
