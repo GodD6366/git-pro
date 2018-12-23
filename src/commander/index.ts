@@ -23,7 +23,7 @@ program
         addFiles = files.split(',').join(' ');
         return !!addFiles;
     })
-    .option('-p, --pull', '提交前先拉取最新代码')
+    .option('-p, --pull', '提交前,先拉取最新代码')
     .option('-s, --push', '提交完成后,推送代码')
     .action((name: String, cmd: any) => {
         try {
