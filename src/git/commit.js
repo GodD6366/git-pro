@@ -5,6 +5,15 @@ const ora = require('ora');
 const prompsConfig = require('../config/promps');
 
 async function commit() {
+
+    if (shell.exec('git status').stdout.indexOf('no changes added to commit') > 0) {
+        ora().fail(
+            `没有已暂存的文件用于提交!请使用:
+    git-tools commit -a [files]
+进行提交!`);
+        return;
+    }
+
     let {
         type
     } = await inquirer.prompt(prompsConfig.ciType);
@@ -13,22 +22,18 @@ async function commit() {
     } = await inquirer.prompt(prompsConfig.ciMsg);
 
     const commitSpinner = ora('git commit 提交代码').start();
-    // console.log(chalk.green('git commit 提交代码...'));
     let commitMsg = `git commit -m "${type} ${msg}"`
     const {
         code,
         stdout,
         stderr
     } = shell.exec(commitMsg);
-    console.log(chalk.cyan(`->  ${commitMsg}`));
     if (code !== 0) {
-        console.log(stdout);
-        // console.log(chalk.red(`✖ 提交失败!`));
         commitSpinner.fail('提交失败!')
-        throw new Error(stderr);
+        console.log(chalk.cyan(`->  ${commitMsg}`));
+        throw new Error(stdout + '\n' + stderr);
     }
     commitSpinner.succeed('提交完成!')
-    // console.log(chalk.green(`✔ 提交完成!`));
     return true;
 }
 
