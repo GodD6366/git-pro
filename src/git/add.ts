@@ -16,4 +16,4 @@ function add(files = '.') {
     return true;
 }
 
-module.exports = add;
+export default add;
