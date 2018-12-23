@@ -14,7 +14,7 @@ export default function() {
         return false;
     }
     if (addStdout.indexOf('nothing to commit') > 0) {
-        ora().succeed(NOTHING_TO_COMMIT);
+        ora().fail(NOTHING_TO_COMMIT);
         return false;
     }
     return true;
