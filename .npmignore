@@ -29,3 +29,5 @@ yarn-error.log*
 tsconfig.json
 test.js
 *.js.map
+
+.gitprorc.js

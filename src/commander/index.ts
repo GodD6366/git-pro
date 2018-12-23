@@ -6,6 +6,7 @@ import add from '../git/add';
 import commit from '../git/commit';
 import pull from '../git/pull';
 import others from '../git/others';
+import { init } from '../utils/gitpro';
 
 let pkPath = path.resolve(__dirname, '../../package.json');
 let version = fs.readJsonSync(pkPath).version;
@@ -31,6 +32,13 @@ program
             console.log(chalk.red('\n' + message));
             process.exit(0);
         }
+    });
+
+program
+    .command('custom')
+    .description('进行一些自定义配置')
+    .action(() => {
+        init();
     });
 
 /**
