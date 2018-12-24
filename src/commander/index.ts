@@ -6,7 +6,7 @@ import add from '../git/add';
 import commit from '../git/commit';
 import pull from '../git/pull';
 import push from '../git/push';
-import others from '../git/others';
+import gitProxy from '../git/gitProxy';
 import { init } from '../utils/gitpro';
 
 let pkPath = path.resolve(__dirname, '../../package.json');
@@ -51,7 +51,7 @@ program
 program
     .command('*')
     .description('代理其他git操作')
-    .action(others);
+    .action(gitProxy);
 
 program.parse(process.argv);
 

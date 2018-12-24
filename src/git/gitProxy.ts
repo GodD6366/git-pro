@@ -1,12 +1,15 @@
 const shell = require('shelljs');
-const ora = require('ora');
 
-function other(action: String = '', cmd: any) {
-    let args: Array<String> = cmd.parent.rawArgs;
+/**
+ * 代理其他git命令
+ * @param action git 命令
+ */
+function gitProxy(action: String = '') {
+    let args: Array<String> = process.argv;
     let argsStr = args.slice(args.indexOf(action) + 1).join(' ');
     shell.config.silent = false;
     let execCmd = `git ${action} ${argsStr}`;
     shell.exec(execCmd);
 }
 
-export default other;
+export default gitProxy;
