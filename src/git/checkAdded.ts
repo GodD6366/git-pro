@@ -2,9 +2,7 @@ const shell = require('shelljs');
 const ora = require('ora');
 shell.config.silent = true;
 
-const NO_CHANGE: String = `no changes added to commit! please use:
-  git-pro commit -a [files]
-  to retry!`;
+const NO_CHANGE: String = `no changes added to commit!`;
 const NOTHING_TO_COMMIT: String = `nothing to commit, working tree clean`;
 
 export default function() {

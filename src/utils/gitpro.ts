@@ -1,6 +1,6 @@
 import { getGitProRcPath } from './index';
 import RC_TEMPLATE from '../template/rc';
-const path = require('path');
+const shell = require('shelljs');
 const fs = require('fs-extra');
 
 export function init() {
@@ -9,6 +9,7 @@ export function init() {
         console.log('文件已经存在');
     } else {
         fs.outputFileSync(config, RC_TEMPLATE);
+        shell.exec(`prettier --write ${config}`);
     }
 }
 
@@ -26,7 +27,7 @@ export function getRcInfo() {
         // };
         return {
             commitList: rcConfig.commitList || {},
-            commitMessage: rcConfig.commitMessage || {}
+            commitMessage: rcConfig.commitMessage || {},
         };
     }
     return {};

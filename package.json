@@ -8,7 +8,12 @@
         "build": "tsc -d -P tsconfig.json"
     },
     "bin": {
-        "git-pro": "lib/index.js"
+        "git-pro": "lib/index.js",
+        "gitp": "lib/index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/GodD6366/git-pro.git"
     },
     "author": "",
     "license": "ISC",
@@ -17,11 +22,12 @@
         "typescript": "^3.2.2"
     },
     "dependencies": {
+        "chalk": "^2.4.1",
         "commander": "^2.19.0",
         "fs-extra": "^7.0.1",
-        "chalk": "^2.4.1",
         "inquirer": "^6.2.0",
         "ora": "^3.0.0",
+        "prettier": "^1.15.3",
         "shelljs": "^0.8.2"
     },
     "engines": {

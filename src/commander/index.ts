@@ -55,4 +55,10 @@ program
 
 program.parse(process.argv);
 
+if (!process.argv.slice(2).length) {
+    program.outputHelp((text: string) => {
+        return chalk.red(text);
+    });
+}
+
 export default program;
