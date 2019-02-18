@@ -4,17 +4,19 @@ shell.config.silent = true;
 
 function push() {
     const pushSpinner = ora('git push').start();
-    const { brName } = shell.exec(`git symbolic-ref --short -q HEAD`);
-    console.log(`git push --set-upstream origin ${brName}`);
-    
-    // const { stderr, code } = shell.exec(`git push --set-upstream origin ${brName}`);
+    try {
+        const { stdout: brName } = shell.exec(`git symbolic-ref --short HEAD`);
+        const { stderr, code } = shell.exec(`git push --set-upstream origin ${brName}`);
 
-    // if (code !== 0) {
-    //     pushSpinner.fail('push failed!');
-    //     throw new Error(stderr);
-    // }
-    // pushSpinner.succeed('push succeed!');
-    return true;
+        if (code !== 0) {
+            pushSpinner.fail('push failed!');
+            throw new Error(stderr);
+        }
+        pushSpinner.succeed('push succeed!');
+        return true;
+    } catch (error) {
+        return false;
+    }
 }
 
 export default push;
