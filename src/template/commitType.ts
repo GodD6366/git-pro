@@ -21,7 +21,7 @@ export const choices = [
     },
     {
         name: '🔥  删除代码或文件',
-        value: ':new:',
+        value: ':fire:',
     },
     {
         name: '💄  更新用户界面和样式文件',
@@ -52,16 +52,20 @@ export const choices = [
         value: ':tada:',
     },
     {
+        name: '🚨  移除 linter 警告',
+        value: ':rotating_light:',
+    },
+    {
+        name: '👌  review时更新代码',
+        value: ':ok_hand:',
+    },
+    {
         name: '🔖  发布/版本标签',
         value: ':bookmark:',
     },
     {
         name: '👷  增加CI编译系统',
         value: ':construction_worker:',
-    },
-    {
-        name: '👌  review时更新代码',
-        value: ':ok_hand:',
     },
     {
         name: '🙈  更新.gitignore',
