@@ -17,12 +17,18 @@ export default {
     ],
     ciScope:
         customConfig.scopes.length > 0
-            ? {
-                  type: 'list',
-                  name: 'scope',
-                  message: customConfig.messages.scopeList || '选择一个scope (可选):',
-                  choices: customConfig.scopes,
-              }
+            ? (() => {
+                  customConfig.scopes.unshift({
+                      name: '--跳过--',
+                      value: '',
+                  });
+                  return {
+                      type: 'list',
+                      name: 'scope',
+                      message: customConfig.messages.scopeList || '选择一个scope (可选):',
+                      choices: customConfig.scopes,
+                  };
+              })()
             : {
                   type: 'input',
                   name: 'scope',
