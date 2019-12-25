@@ -39,10 +39,11 @@ program
     });
 
 program
-    .command('custom')
+    .command('custom [options]')
     .description('进行一些自定义配置')
-    .action(() => {
-        init();
+    .option('-g, --glob', '全局')
+    .action((name: String, cmd: any) => {
+        init(cmd || {});
     });
 
 /**

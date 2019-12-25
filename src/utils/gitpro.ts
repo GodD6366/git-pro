@@ -1,12 +1,22 @@
-import { getGitProRcPath } from './index';
+import { getGitProRcPath, CONFIG_FILE_NAME } from './index';
 import RC_TEMPLATE from '../template/rc';
 const shell = require('shelljs');
 const fs = require('fs-extra');
+const path = require('path');
+const userHome = require('user-home');
+const debug = require('debug')('git-pro#src/utils/gitpro.ts');
 
-export function init() {
-    let config = getGitProRcPath();
+export function init({ glob = false }) {
+    let config = '';
+    debug('glob', glob);
+    if (glob) {
+        config = path.join(userHome, CONFIG_FILE_NAME);
+    } else {
+        config = path.join(process.cwd(), CONFIG_FILE_NAME);
+    }
+
     if (fs.existsSync(config)) {
-        console.log('文件已经存在');
+        console.log('文件已经存在', config);
     } else {
         fs.outputFileSync(config, RC_TEMPLATE);
         shell.exec(`prettier --write ${config}`);
@@ -15,20 +25,17 @@ export function init() {
 
 export function getRcInfo() {
     let config: string = getGitProRcPath();
+    let rcConfig = {};
     if (fs.existsSync(config)) {
-        // fs.readFileSync(config, 'utf-8');
-        let rcConfig = require(config);
-        // return {
-        //     commitList: {
-        //         message: rcConfig.commitList.message,
-        //         choices: rcConfig.commitList.choices
-        //     },
-        //     commitMessage: { message: rcConfig.commitMessage.message }
-        // };
-        return {
-            commitList: rcConfig.commitList || {},
-            commitMessage: rcConfig.commitMessage || {},
-        };
+        debug('配置文件存在');
+        rcConfig = require(config);
     }
-    return {};
+    return Object.assign(
+        {
+            type: 'emoji',
+            messages: {} as any,
+            scopes: [],
+        },
+        rcConfig
+    );
 }

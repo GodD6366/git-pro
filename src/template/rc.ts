@@ -1,13 +1,14 @@
-import { choices } from './commitType';
+import { textTypes } from './commitType';
 
 const RC_TEMPLATE = `
 module.exports = {
-    commitList: {
-        // message: '选择本次提交的类型:',
-        choices: ${JSON.stringify(choices)}
-    },
-    commitMessage: {
-        // message: '请输入提交文本:',
+    // 目前只有两种类型 text / emoji
+    type: 'emoji',
+    messages: {
+        type: '选择一种你的提交类型:',
+        scopeList: '选择一个scope (可选):',
+        scope: '请输入scope (可选):',
+        subject: '请输入提交信息:',
     }
 };
 `;

@@ -12,7 +12,7 @@ npm install -g git-pro
 
 #### git commit 增强
 
- 带 emoji 选择的 commit 提交
+ 带类型选择的 commit 提交,会向上查找配置文件
 
 ```shell
 git-pro commit
@@ -49,31 +49,31 @@ git-pro status # 就相当于 git status
 默认的提交选项很多,有时候我们可能不需要这么多,甚至可能需要特殊的提交类型,这时候可以使用自定义功能进行配置
 
 ```shell
-git-pro custom
+git-pro custom [-g]
 ```
 
-执行后会在项目根目录下生成`.gitprorc.js`文件
+执行后会在项目根目录下生成`.gitprorc.js`文件,如果存在`-g`参数,会在用户根目录生成
 
-|   参数说明    |  类型  | 说明         |
-| :-----------: | :----: | :----------- |
-|  commitList   | Object | 提交类型列表 |
-| commitMessage | Object | 提交信息     |
+| 参数说明 |  类型  | 说明                                 |
+| :------: | :----: | :----------------------------------- |
+|   type   | String | 'emoji' / 'text'                     |
+|  types   | Array  | 提交类型自定义列表                   |
+|  scopes  | Array  | scope 列表,如果存在,提交时会提供选项 |
 
-##### commitList 配置
+##### types 配置
 
-| 参数说明 |  类型  | 说明                   |
-| :------: | :----: | :--------------------- |
-| message  | String | 提交类型选择时提示文字 |
-| choices  | Array  | 提交类型类别           |
+| 参数说明 |  类型  | 说明             |
+| :------: | :----: | :--------------- |
+|   name   | String | 提交类型提示文字 |
+|  value   | Array  | 提交类型值       |
 
-##### commitMessage 配置
+##### messages 配置
 
-| 参数说明 |  类型  | 说明                   |
-| :------: | :----: | :--------------------- |
-| message  | String | 提交信息输入时提示文字 |
+| 参数说明 |  类型  | 说明             |
+| :------: | :----: | :--------------- |
+|   xxx    | String | 不同阶段提示文字 |
 
 ## TODO
 
-1. ~~自定义commit类型列表~~
 2. 按使用热度排序
 3. 历史记录调用

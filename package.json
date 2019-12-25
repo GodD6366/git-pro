@@ -1,36 +1,39 @@
 {
-    "name": "git-pro",
-    "version": "0.2.6",
-    "description": "git commit 增强工具",
-    "main": "lib/index.js",
-    "scripts": {
-        "start": "ts-node src/index.ts",
-        "build": "tsc -d -P tsconfig.json"
-    },
-    "bin": {
-        "git-pro": "lib/index.js",
-        "gitp": "lib/index.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/GodD6366/git-pro.git"
-    },
-    "author": "",
-    "license": "ISC",
-    "devDependencies": {
-        "@types/node": "^10.12.18",
-        "typescript": "^3.2.2"
-    },
-    "dependencies": {
-        "chalk": "^2.4.1",
-        "commander": "^2.19.0",
-        "fs-extra": "^7.0.1",
-        "inquirer": "^6.2.0",
-        "ora": "^3.0.0",
-        "prettier": "^1.15.3",
-        "shelljs": "^0.8.2"
-    },
-    "engines": {
-        "node": ">=8.4.0"
-    }
+  "name": "git-pro",
+  "version": "0.2.6",
+  "description": "git commit 增强工具",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "dev": "tsc -d -w -P tsconfig.json",
+    "build": "tsc -d -P tsconfig.json"
+  },
+  "bin": {
+    "git-pro": "lib/index.js",
+    "gitp": "lib/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GodD6366/git-pro.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^10.12.18",
+    "typescript": "^3.2.2"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "commander": "^2.19.0",
+    "debug": "^4.1.1",
+    "fs-extra": "^7.0.1",
+    "inquirer": "^6.2.0",
+    "ora": "^3.0.0",
+    "prettier": "^1.15.3",
+    "shelljs": "^0.8.2",
+    "user-home": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=8.4.0"
+  }
 }

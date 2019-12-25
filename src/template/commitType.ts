@@ -1,4 +1,4 @@
-export const choices = [
+export const emojiTypes = [
     {
         name: '🚧  工作进行中',
         value: ':construction:',
@@ -94,5 +94,48 @@ export const choices = [
     {
         name: '➖  减少依赖',
         value: ':heavy_minus_sign:',
+    },
+];
+
+export const textTypes = [
+    {
+        name: 'feat: 添加新功能',
+        value: 'feat',
+    },
+    {
+        name: 'fix: 修复 bug',
+        value: 'fix',
+    },
+    {
+        name: 'WIP: 工作进行中',
+        value: 'WIP',
+    },
+    {
+        name: 'docs: 撰写文档',
+        value: 'docs',
+    },
+    {
+        name: 'style: 更新用户界面和样式文件',
+        value: 'style',
+    },
+    {
+        name: 'refactor: 改进代码的结构/格式',
+        value: 'refactor',
+    },
+    {
+        name: 'perf: 提升性能',
+        value: 'perf',
+    },
+    {
+        name: 'chore: 更改配置文件',
+        value: 'chore',
+    },
+    {
+        name: 'revert: 回滚一次提交',
+        value: 'revert',
+    },
+    {
+        name: 'test: 增加测试',
+        value: 'test',
     },
 ];
